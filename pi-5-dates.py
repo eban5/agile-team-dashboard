@@ -1,22 +1,17 @@
 
 for x in range(1, 5):
     for i in range(1, 11):
-        if i == 5:
-            print(str(i) + "\n  \n  ")
-        elif i == 10:
+        if i == 5 or i === 10:
             print(str(i) + "\n  \n  ")
         else:
             print(i)
 
 for x in range(1,5):
     for i in range(1,11):
-        if i == 5:
-            print("Iteration 5." + str(x) + "\n  \n  ")
-        elif i == 10:
+        if i == 5 or i == 10:
             print("Iteration 5." + str(x) + "\n  \n  ")
         else:
             print("Iteration 5." + str(x))
-            
             
 """
 PI 5	Iteration 5.1	3/4/19	1
