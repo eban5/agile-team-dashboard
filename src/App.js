@@ -61,7 +61,7 @@ class App extends Component {
               <div style={{
                 "paddingTop": '50px'
               }}></div>
-              <GitHubIssueCount owner="BluestoneLogic" repository="web-design-standards" authKey="" />
+              {/* <GitHubIssueCount owner="BluestoneLogic" repository="methods" authKey="" /> */}
               <div>
                 <h3>Active Projects</h3>
                 <ul>
