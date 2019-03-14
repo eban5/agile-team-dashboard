@@ -1,4 +1,5 @@
 # blart-dashboard
+[![CodeBuild](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoicTZRUWdzUE5TVFNSNTd3UEhXTkdrVTYyUzlFY0ZxOHAzTXpya3NuTHFoQ3lRbU5hVmFtNXdESVkvT2ZYRlpRZkdma29RR0VWSGFQR1JYWkZldWJVQ2RRPSIsIml2UGFyYW1ldGVyU3BlYyI6ImtwaFMwMENSV3E5SDNYaGQiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 
 Start the dev server with `npm start`
 
