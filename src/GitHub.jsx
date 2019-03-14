@@ -26,10 +26,11 @@ export default class GitHubIssueCount extends Component {
     }
 
     componentDidMount() {
-        const opts = { headers: process.env.TOKEN }
+        const opts = { headers: process.env.REACT_APP_TOKEN }
         console.log("TOKEN");
         console.log(opts)
-        console.log("Auth Key")
+        console.log(process.env.NODE_ENV);
+        console.log(process.env.REACT_APP_TOKEN)
         // console.log(authKey)
         // schema.validate(this.props)
         //   .then(() => this.fetchInformation())
@@ -46,12 +47,8 @@ export default class GitHubIssueCount extends Component {
     async fetchInformation() {
         const { authKey, owner, repository } = this.props
         // const opts = authKey ? { headers: basicAuthHeader(authKey) } : {}
-        const opts = { headers: process.env.TOKEN }
-        console.log("TOKEN");
-        console.log(opts)
-        console.log("Auth Key")
         console.log(authKey)
-        console.log(process.env.TOKEN);
+        const opts = { headers: process.env.REACT_APP_TOKEN }
 
         try {
             const res = await fetch(`https://api.github.com/repos/${owner}/${repository}`, opts)
