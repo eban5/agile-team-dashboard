@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import './index.css';
 import data from './pi5.js'
+import GitHubIssueCount from './GitHub';
 
 class App extends Component {
   constructor(props) {
@@ -15,13 +16,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-
-    // // today 
-    // var q = new Date();
-    // var m = q.getMonth() + 1;
-    // var d = q.getDay();
-    // var y = q.getFullYear();
-    // var date = new Date(y, m, d);
 
 
     var today = new Date().toLocaleDateString();
@@ -67,8 +61,9 @@ class App extends Component {
               <div style={{
                 "paddingTop": '50px'
               }}></div>
+              <GitHubIssueCount owner="BluestoneLogic" repository="web-design-standards" authKey="" />
               <div>
-                < h3 > Active Projects</h3>
+                <h3>Active Projects</h3>
                 <ul>
 
                   <li>C4PM Development</li>
