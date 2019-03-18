@@ -55,8 +55,8 @@ class App extends Component {
                 {this.state.program_increment} - {this.state.iteration} - Day {this.state.iteration_day} of 10
                 </div>
               <div>
-                <p>Start Date: March 4, 2019</p>
-                <p>End Date: March 15, 2019</p>
+                <p>Start Date: March 18, 2019</p>
+                <p>End Date: March 29, 2019</p>
               </div>
               <div style={{
                 "paddingTop": '50px'
