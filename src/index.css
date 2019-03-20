@@ -25,6 +25,34 @@ hr {
   color: #34A4DA;
 }
 
+.blart-purple {
+  color: purple;
+}
+
+.today {
+  background: #34A4DA;
+  color: black;
+}
+
+.day {
+  font-size: 60px;
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 30px;
+}
+
+td {
+  border: 1px solid white;
+  height: 100px;
+  width: 100px;
+  padding: 5px;
+  margin: 10px;
+  text-align: right;
+  vertical-align: top;
+  font-size: 0.5em;
+  padding-right: 5px;
+}
+
 .blart-header {
   padding-top: 10px;
   text-transform: uppercase;
@@ -36,10 +64,25 @@ hr {
   font-family: 'Open Sans Condensed', Helvetica, Arial, sans-serif;
   font-size: 2em;
   font-weight: bold;
+  /* letter-spacing: 0.025em; */
 }
 
 .blart-background {
   width: 100%;
+}
+
+.img-container {
+  /* filter: brightness(25%); */
+  /* background-image: url('./blart-background.png'); */
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)), url('./blart-background-wide.png');
+  background-size: cover;
+  /* min-height: 100vh; */
+
+  display: table;
+  width: 100%;
+  /* height: 100%; */
+  background-position: center top;
+  /* height: 350px; */
 }
 
 ul {

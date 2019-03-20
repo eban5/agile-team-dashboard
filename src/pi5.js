@@ -240,5 +240,29 @@ var data = [{
     }
 ]
 
+var date_ranges = [{
+        "iteration": "Iteration 5.1",
+        "start_date": "3/4/19",
+        "end_date": "3/15/19"
+    },
+    {
+        "iteration": "Iteration 5.2",
+        "start_date": "3/18/19",
+        "end_date": "3/29/19"
+    },
+    {
+        "iteration": "Iteration 5.3",
+        "start_date": "4/1/19",
+        "end_date": "4/12/19"
+    },
+    {
+        "iteration": "Iteration 5.4",
+        "start_date": "4/15/19",
+        "end_date": "4/26/19"
+    }
+]
 
-export default data;
+export {
+    data,
+    date_ranges
+};
