@@ -1,5 +1,9 @@
 .App {
-  /* text-align: center; */
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)), url('./blart-background-wide.png');
+  background-size: cover;
+  display: table;
+  width: 100%;
+  background-position: center top;
 }
 
 .App-logo {
@@ -27,6 +31,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

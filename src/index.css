@@ -13,7 +13,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #838686;
   font-size: 2em;
-  margin: 10px;
+  /* margin: 10px; */
 }
 
 hr {
@@ -26,7 +26,7 @@ hr {
 }
 
 .blart-purple {
-  color: purple;
+  color: #544496;
 }
 
 .today {
@@ -34,23 +34,25 @@ hr {
   color: black;
 }
 
-.day {
-  font-size: 60px;
-  text-align: center;
-  vertical-align: middle;
-  margin-top: 30px;
+.today_gccsj {
+  background: #544496;
+  color: black;
 }
 
-td {
-  border: 1px solid white;
-  height: 100px;
-  width: 100px;
-  padding: 5px;
-  margin: 10px;
-  text-align: right;
-  vertical-align: top;
-  font-size: 0.5em;
-  padding-right: 5px;
+.word {
+  font-size: 10px;
+  margin-bottom: -15px;
+}
+
+.day, .word {
+  text-align: center;
+  
+}
+
+.day {
+  font-size: 50px;
+  vertical-align: middle;
+  /* margin-top: 30px; */
 }
 
 .blart-header {

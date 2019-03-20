@@ -1,0 +1,21 @@
+table,
+tr {
+    border: '1px solid white'
+}
+
+td {
+    border: 1px solid white;
+    height: 100px;
+    width: 100px;
+    padding: 5px;
+    margin: 10px;
+    text-align: right;
+    vertical-align: top;
+    font-size: 0.5em;
+    padding-right: 5px;
+}
+
+.td-blank {
+    border-top: none;
+    border-left: none;
+}

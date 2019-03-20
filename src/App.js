@@ -1,27 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
+import Table from './components/Table';
 import './index.css';
+import './styles/table.css'
 import { data } from './pi5.js';
 // import GitHubIssueCount from './GitHub';
 
-Date.prototype.addDays = function (days) {
-  var dat = new Date(this.valueOf())
-  dat.setDate(dat.getDate() + days);
-  return dat;
-}
-
-function getDates(startDate, stopDate) {
-  var dateArray = new Array();
-  var currentDate = startDate;
-  while (currentDate <= stopDate) {
-    // skip weekends
-    if (currentDate.getDay() !== 0 || currentDate.getDay() !== 6) {
-      dateArray.push(currentDate)
-      currentDate = currentDate.addDays(1);
-    }
-  }
-  return dateArray;
-}
 
 class App extends Component {
   constructor(props) {
@@ -30,10 +14,8 @@ class App extends Component {
       program_increment: "",
       iteration: "",
       current_date: "",
-      iteration_day: "",
+      // iteration_day: "",
       color: true,
-      start_date: "",
-      end_date: "",
       date_range: [],
       current_month: "",
     }
@@ -52,41 +34,15 @@ class App extends Component {
           program_increment: data[i].program_increment,
           iteration: data[i].iteration,
           current_date: data[i].current_date,
-          iteration_day: data[i].iteration_day,
+          // iteration_day: data[i].iteration_day,
           current_month: new Date().toLocaleString('en-us', { month: 'long' })
         })
       }
     }
 
-    var dateArray = getDates(new Date('03/18/2019'), (new Date()).addDays(10));
-    this.setState({
-      date_range: dateArray,
-      start_date: dateArray[0].toDateString(),
-      end_date: dateArray[dateArray.length - 1].toDateString()
-    })
-
   }
 
-
   render() {
-    var { date_range } = this.state;
-    var cal = date_range.map((item, idx) => {
-      if (item.getDate() === new Date().getDate()) {
-        return (<td className="today" key={idx}>
-          {item.getDate()}<div className="day"></div>
-        </td>)
-
-      } else {
-        return (
-          <td key={idx}>
-            {item.getDate()}
-            <div className="day"></div>
-          </td>)
-      }
-    })
-    var first_half = cal.splice(0, (cal.length / 2) - 1);
-    var second_half = cal.splice((cal.length / 2) - 1);
-
     return (
       <div className="App">
         <div className="container-fluid">
@@ -95,49 +51,68 @@ class App extends Component {
               <div className="blart-header">BluestoneLogic Agile Release Train<br />
               </div>
             </div>
-            {/* <div className="col">
+            <div className="col">
               <div className="blart-header">GCCS-J Agile Release Train<br />
               </div>
-            </div> */}
+            </div>
           </div>
           <div className="row">
             <div className="col"><hr /></div>
           </div>
 
           <div className="row">
-            <div className="img-container">
-              <div className="col">
-                <div className="blart-blue blart-title">
-                  {this.state.program_increment} - {this.state.iteration}
-                </div>
-                <div>
-                  <strong>{this.state.current_month}</strong>
-                  <table style={{ border: '1px solid white' }}>
-                    <tbody>
-                      <tr style={{ border: '1px solid white' }}>
-                        {first_half}
-                      </tr>
-                      <tr>
-                        {second_half}
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div style={{
-                  "paddingTop": '50px'
-                }}></div>
-                {/* <GitHubIssueCount owner="BluestoneLogic" repository="methods" authKey="" /> */}
-                <div>
-                  <h3>Active Projects</h3>
-                  <ul>
-                    <li>C4PM Development</li>
-                    <li>ITaaS</li>
-                  </ul>
-                </div>
-                <div style={{
-                  "paddingTop": '150px'
-                }}></div>
+            <div className="col">
+              <div className="blart-blue blart-title">
+                {this.state.program_increment} - {this.state.iteration}
               </div>
+              <div>
+                {this.state.current_month}
+
+                <Table art="blart" />
+
+              </div>
+              <div style={{
+                "paddingTop": '50px'
+              }}></div>
+              {/* <GitHubIssueCount owner="BluestoneLogic" repository="methods" authKey="" /> */}
+              <div>
+                <h3>Active Projects</h3>
+                <ul>
+                  <li>C4PM Development</li>
+                  <li>ITaaS</li>
+                </ul>
+              </div>
+              <div style={{
+                "paddingTop": '150px'
+              }}></div>
+            </div>
+            {/* GCCS-J */}
+            <div className="col">
+              <div className="blart-purple blart-title">
+                {/* {this.state.program_increment} - {this.state.iteration} */}
+                PI 1 - Iteration 1.4
+                {/* <br />"Innovation and Planning" */}
+              </div>
+              <div>
+                {this.state.current_month}
+
+                <Table art="gccsj" />
+
+              </div>
+              <div style={{
+                "paddingTop": '50px'
+              }}></div>
+              {/* <GitHubIssueCount owner="BluestoneLogic" repository="methods" authKey="" /> */}
+              <div>
+                <h3>Active Projects</h3>
+                <ul>
+                  <li>Comms Topology</li>
+                  <li>DevOps</li>
+                </ul>
+              </div>
+              <div style={{
+                "paddingTop": '150px'
+              }}></div>
             </div>
           </div>
         </div>
