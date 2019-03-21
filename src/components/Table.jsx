@@ -26,27 +26,28 @@ class Table extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            blart_date_range: [],
-            gccsj_date_range: [],
+            // blart_date_range: [],
+            // gccsj_date_range: [],
         }
     }
-    componentDidMount() {
-        var blart_dates = getDates(new Date('03/18/2019'), new Date('03/29/2019'));
-        // var gccsj_dates = getDates(new Date('03/18/2019'), new Date('04/01/2019'));
-        // var blart_dates = getDates(new Date('03/18/2019'), (new Date()).addDays(10));
-        // var gccsj_dates = getDates(new Date('03/18/2019'), (new Date()).addDays(12));
+    // componentDidMount() {
 
-        this.setState({
-            blart_date_range: blart_dates,
-            // gccsj_date_range: gccsj_dates,
-            // start_date: blart_dates[0].toDateString(),
-            // end_date: blart_dates[blart_dates.length - 1].toDateString()
-        })
-    }
+    // var gccsj_dates = getDates(new Date('03/18/2019'), new Date('04/01/2019'));
+    // var blart_dates = getDates(new Date('03/18/2019'), (new Date()).addDays(10));
+    // var gccsj_dates = getDates(new Date('03/18/2019'), (new Date()).addDays(12));
+
+    // this.setState({
+    // blart_date_range: blart_dates,
+    // gccsj_date_range: gccsj_dates,
+    // start_date: blart_dates[0].toDateString(),
+    // end_date: blart_dates[blart_dates.length - 1].toDateString()
+    // })
+    // }
 
     render() {
         if (this.props.art === "blart") {
-            var cal = this.state.blart_date_range.map((item, idx) => {
+            var blart_dates = getDates(new Date('03/18/2019'), new Date('03/29/2019'));
+            var cal = blart_dates.map((item, idx) => {
                 if (item.getDate() === new Date().getDate()) {
                     return (<td className="today" key={idx}>
                         {item.getDate()}<div className="day"></div>
@@ -60,8 +61,17 @@ class Table extends Component {
                         </td>)
                 }
             })
-            var first_half = cal.splice(0, (cal.length / 2) - 1);
-            var second_half = cal.splice((cal.length / 2) - 1);
+
+            var first_half = [];
+            var second_half = [];
+            for (let x = 0; x < cal.length; x++) {
+                if (x < 5) {
+                    first_half.push(cal[x]);
+                } else {
+                    second_half.push(cal[x]);
+                }
+            }
+
             return (
                 <table>
                     <tbody>
@@ -98,7 +108,7 @@ class Table extends Component {
             var j_first_half = [];
             var j_second_half = [];
             var j_third_half = [];
-            for (var x = 0; x < j_cal.length; x++) {
+            for (let x = 0; x < j_cal.length; x++) {
                 if (x < 5) {
                     j_first_half.push(j_cal[x]);
                 } else if (x >= 5 && x < 10) {
