@@ -56,7 +56,7 @@ class App extends Component {
       }
     }
   }
-  //send the appropriate date ranges to each Table component 
+  //send the appropriate date ranges to each Table component
   render() {
     return (
       <div className="App">
@@ -119,8 +119,13 @@ class App extends Component {
               <div>
                 <h4>Active Projects</h4>
                 <ul>
-                  <li>DevOps Pipeline</li>
+                  <li>JE DevOps Pipeline</li>
                   <li>Comms Topology</li>
+                  <li>JE Cyber Security Engineering</li>
+                  <li>JE Interface Management</li>
+                  <li>JE PMO Strategy</li>
+                  <li>JE Continuous Exploration</li>
+                  <li>J Central Curation</li>
                   {/* <li class="pill purple-pill">DevOps Pipeline</li>
                   <li class="pill purple-pill">Comms Topology</li> */}
                 </ul>
