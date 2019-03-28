@@ -11,33 +11,40 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      today: "",
       blart_program_increment: "",
       blart_start_date: "",
       blart_end_date: "",
       blart_sprint: "",
-      current_month: "",
+      blart_current_month: "",
       gccsj_program_increment: "",
       gccsj_start_date: "",
       gccsj_end_date: "",
       gccsj_sprint: "",
+      gccsj_current_month: ""
     }
   }
 
   componentDidMount() {
     //find out what today is
     var today = new Date().toLocaleDateString();
+    // var today = new Date('3/5/2019').toLocaleString();
+    // console.log(today)
+    this.setState({ today: today })
 
     //iterate through both ARTs date sets
     for (let x = 0; x < blart_dates.length; x++) {
       for (let y = 0; y < blart_dates[x].sprints.length; y++) {
-
+        // console.log(blart_dates[x].sprints[y].sprint_start_date)
+        // console.log(today >= blart_dates[x].sprints[y].sprint_start_date)
         if (today >= blart_dates[x].sprints[y].sprint_start_date && today <= blart_dates[x].sprints[y].sprint_end_date) {
+          // console.log("Hit")
           this.setState({
             blart_program_increment: blart_dates[x].program_increment,
             blart_sprint: blart_dates[x].sprints[y].current_sprint,
             blart_start_date: blart_dates[x].sprints[y].sprint_start_date,
             blart_end_date: blart_dates[x].sprints[y].sprint_end_date,
-            current_month: new Date().toLocaleString('en-us', { month: 'long' })
+            blart_current_month: new Date(today).toLocaleString('en-us', { month: 'long' })
           })
         }
       }
@@ -51,6 +58,7 @@ class App extends Component {
             gccsj_sprint: gccsj_dates[x].sprints[y].current_sprint,
             gccsj_start_date: gccsj_dates[x].sprints[y].sprint_start_date,
             gccsj_end_date: gccsj_dates[x].sprints[y].sprint_end_date,
+            gccsj_current_month: new Date(today).toLocaleString('en-us', { month: 'long' })
           })
         }
       }
@@ -61,34 +69,37 @@ class App extends Component {
     return (
       <div className="App">
         <div className="container-fluid">
-          <div className="row">
-            <div className="col">
-              <div className="blart-header">BluestoneLogic Agile Release Train<br />
+          <div className="art-block">
+            <div className="row">
+              <div className="col">
+                <div className="blart-header">BluestoneLogic Agile Release Train<br />
+                </div>
               </div>
             </div>
-            <div className="col">
-              <div className="blart-header">GCCS-J Agile Release Train<br />
+            <div className="row">
+              <div className="col"><hr /></div>
+            </div>
+            <div className="row">
+              <div className="col">
+                <div className="blart-blue blart-title">
+                  {this.state.blart_program_increment} - {this.state.blart_sprint}
+                </div>
               </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col"><hr /></div>
-          </div>
+            <div className="row">
+              <div className="col">
+                <div>
+                  {this.state.blart_current_month}
+                  <Table
+                    art="blart"
+                    start_date={this.state.blart_start_date}
+                    end_date={this.state.blart_end_date}
+                    today={this.state.today}
+                  />
+                </div>
 
-          <div className="row">
-            <div className="col">
-              <div className="blart-blue blart-title">
-                {this.state.blart_program_increment} - {this.state.blart_sprint}
               </div>
-              <div>
-                {this.state.current_month}
-                <Table art="blart" start_date={this.state.blart_start_date} end_date={this.state.blart_end_date} />
-              </div>
-              <div style={{
-                "paddingTop": '50px'
-              }}></div>
-              {/* <GitHubIssueCount owner="BluestoneLogic" repository="methods" authKey="" /> */}
-              <div>
+              <div className="col projects">
                 <h4>Active Projects</h4>
                 <ul>
                   <li>C4PM Development</li>
@@ -97,26 +108,41 @@ class App extends Component {
                   <li class="pill blue-pill">ITaaS</li> */}
                 </ul>
               </div>
-              <div style={{
-                "paddingTop": '150px'
-              }}></div>
             </div>
-            {/* GCCS-J */}
-            <div className="col">
-              <div className="blart-purple blart-title">
-                {this.state.gccsj_program_increment} - {this.state.gccsj_sprint}
+          </div>
+          {/* --------- GCCS-J  ----------- */}
+          <div className="art-block">
+            <div className="row">
+              <div className="col">
+                <div className="blart-header">GCCS-J Agile Release Train<br /></div>
               </div>
-              <div>
-                {this.state.current_month}
-
-                <Table art="gccsj" start_date={this.state.gccsj_start_date} end_date={this.state.gccsj_end_date} />
-
+            </div>
+            <div className="row">
+              <div className="col"><hr /></div>
+            </div>
+            {/* --------- GCCS-J  ----------- */}
+            <div className="row">
+              <div className="col">
+                <div className="blart-purple blart-title">
+                  {this.state.gccsj_program_increment} - {this.state.gccsj_sprint}
+                </div>
               </div>
-              <div style={{
-                "paddingTop": '50px'
-              }}></div>
-              {/* <GitHubIssueCount owner="BluestoneLogic" repository="methods" authKey="" /> */}
-              <div>
+            </div>
+            <div className="row">
+              <div className="col">
+                <div>
+                  {this.state.gccsj_current_month}
+
+                  <Table
+                    art="gccsj"
+                    start_date={this.state.gccsj_start_date}
+                    end_date={this.state.gccsj_end_date}
+                    today={this.state.today}
+                    sprint={this.state.gccsj_sprint}
+                  />
+                </div>
+              </div>
+              <div className="col projects">
                 <h4>Active Projects</h4>
                 <ul>
                   <li>JE DevOps Pipeline</li>
@@ -127,14 +153,12 @@ class App extends Component {
                   <li>JE Continuous Exploration</li>
                   <li>J Central Curation</li>
                   {/* <li class="pill purple-pill">DevOps Pipeline</li>
-                  <li class="pill purple-pill">Comms Topology</li> */}
+     <li class="pill purple-pill">Comms Topology</li> */}
                 </ul>
               </div>
-              <div style={{
-                "paddingTop": '150px'
-              }}></div>
             </div>
           </div>
+
         </div>
       </div>
     );

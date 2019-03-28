@@ -24,7 +24,7 @@ export default function Table(props) {
     if (props.art === "blart") {
         var blart_dates = getDates(new Date(props.start_date), new Date(props.end_date));
         var cal = blart_dates.map((item, idx) => {
-            if (item.getDate() === new Date().getDate()) {
+            if (item.getDate() === new Date(props.today).getDate()) {
                 return (<td className="today" key={idx}>
                     {item.getDate()}<div className="day"></div>
                 </td>)
@@ -38,13 +38,13 @@ export default function Table(props) {
             }
         })
 
-        var first_half = [];
-        var second_half = [];
+        var first_row = [];
+        var second_row = [];
         for (let x = 0; x < cal.length; x++) {
             if (x < 5) {
-                first_half.push(cal[x]);
+                first_row.push(cal[x]);
             } else {
-                second_half.push(cal[x]);
+                second_row.push(cal[x]);
             }
         }
 
@@ -52,10 +52,10 @@ export default function Table(props) {
             <table>
                 <tbody>
                     <tr>
-                        {first_half}
+                        {first_row}
                     </tr>
                     <tr>
-                        {second_half}
+                        {second_row}
                     </tr>
                 </tbody>
             </table>
@@ -63,7 +63,7 @@ export default function Table(props) {
     } else if (props.art === "gccsj") {
         var gccsj_dates = getDates(new Date(props.start_date), new Date(props.end_date));
         var j_cal = gccsj_dates.map((item, idx) => {
-            if (item.getDate() === new Date().getDate()) {
+            if (item.getDate() === new Date(props.today).getDate()) {
                 return (<td className="today_gccsj" key={idx}>
                     {item.getDate()}
                 </td>)
@@ -79,36 +79,68 @@ export default function Table(props) {
             }
         })
 
-        var j_first_half = [];
-        var j_second_half = [];
-        var j_third_half = [];
+        var j_first_row = [];
+        var j_second_row = [];
+        var j_third_row = [];
+        var j_fourth_row = [];
+
         for (let x = 0; x < j_cal.length; x++) {
             if (x < 5) {
-                j_first_half.push(j_cal[x]);
+                j_first_row.push(j_cal[x]);
             } else if (x >= 5 && x < 10) {
-                j_second_half.push(j_cal[x]);
+                j_second_row.push(j_cal[x]);
+            } else if (x >= 10 && x < 15) {
+                j_third_row.push(j_cal[x]);
             } else {
-                j_third_half.push(j_cal[x]);
+                if (props.sprint !== "Sprint 4") {
+                    //Sprint 4 is the only 2 week Sprint
+                    j_fourth_row.push(j_cal[x]);
+                }
             }
         }
 
-        return (
-            <div>
-                <table>
-                    <tbody>
-                        <tr>
-                            {j_first_half}
-                        </tr>
-                        <tr>
-                            {j_second_half}
-                        </tr>
-                        <tr>
-                            {j_third_half}
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        if (props.sprint !== "Sprint 4") {
+            return (
+                <div>
+                    <table>
+                        <tbody>
+                            <tr>
+                                {j_first_row}
+                            </tr>
+                            <tr>
+                                {j_second_row}
+                            </tr>
+                            <tr>
+                                {j_third_row}
+                            </tr>
+                            <tr>
+                                {j_fourth_row}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <table>
+                        <tbody>
+                            <tr>
+                                {j_first_row}
+                            </tr>
+                            <tr>
+                                {j_second_row}
+                            </tr>
+                            <tr>
+                                {j_third_row}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            )
+        }
 
-        )
+
+
     }
 }
