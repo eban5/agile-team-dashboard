@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './App.css';
 import Table from './components/Table';
-import './index.css';
-import './styles/table.css'
-import blart_dates from './blart_pi_dates';
-import gccsj_dates from './gccsj_pi_dates';
+import './styles/App.css';
+import './styles/index.css';
+import './styles/table.css';
+import blart_dates from './data/blart_pi_dates';
+import gccsj_dates from './data/gccsj_pi_dates';
 // import GitHubIssueCount from './GitHub';
 
 class App extends Component {
@@ -100,7 +100,7 @@ class App extends Component {
 
               </div>
               <div className="col projects">
-                <h4>Active Projects</h4>
+                <h2>Active Projects</h2>
                 <ul>
                   <li>C4PM Development</li>
                   <li>ITaaS</li>
@@ -143,7 +143,7 @@ class App extends Component {
                 </div>
               </div>
               <div className="col projects">
-                <h4>Active Projects</h4>
+                <h2>Active Projects</h2>
                 <ul>
                   <li>JE DevOps Pipeline</li>
                   <li>Comms Topology</li>

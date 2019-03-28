@@ -1,20 +1,43 @@
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.App {
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)), url('../images/blart-background-wide.png');
+  background-size: cover;
+  display: table;
+  width: 100vw;
+  height: 100vh;
+  background-position: center top;
 }
 
-body {
-  background: #212121;
-  /* font-family: 'Open Sans', Helvetica, Arial, sans-serif; */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #838686;
-  font-size: 2em;
-  /* margin: 10px; */
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
 }
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 
 hr {
   color: #838686;
@@ -22,7 +45,7 @@ hr {
 }
 
 .art-block {
-  padding-bottom: 100px;
+  padding-bottom: 50px;
 }
 
 .projects {
@@ -100,17 +123,12 @@ hr {
 }
 
 .img-container {
-  /* filter: brightness(25%); */
-  /* background-image: url('./blart-background.png'); */
-  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)), url('./blart-background-wide.png');
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)), url('../images/blart-background-wide.png');
   background-size: cover;
-  /* min-height: 100vh; */
-
   display: table;
-  width: 100%;
-  /* height: 100%; */
+  width: 100vw;
+  height: 100vh;
   background-position: center top;
-  /* height: 350px; */
 }
 
 ul {
@@ -118,7 +136,7 @@ ul {
 }
 
 li {
-  font-size: 22px;
+  font-size: 26px;
   padding: 3px 0;
 
 }

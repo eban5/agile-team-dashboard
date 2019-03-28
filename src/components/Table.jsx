@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/table.css';
 
+//eslint-disable-next-line
 Date.prototype.addDays = function (days) {
     var dat = new Date(this.valueOf())
     dat.setDate(dat.getDate() + days);
