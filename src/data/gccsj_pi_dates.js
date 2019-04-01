@@ -22,7 +22,7 @@ var gccsj_dates = [{
     "program_increment": "PI 2",
     "sprints": [{
         "current_sprint": "Sprint 1",
-        "sprint_start_date": "4/3/2019",
+        "sprint_start_date": "4/2/2019",
         "sprint_end_date": "4/23/2019",
     }, {
         "current_sprint": "Sprint 2",

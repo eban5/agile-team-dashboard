@@ -21,6 +21,29 @@ var blart_dates = [{
             "sprint_end_date": "4/26/2019"
         }
     ]
+}, {
+    "program_increment": "PI 6",
+    "sprints": [{
+            "current_sprint": "Sprint 1",
+            "sprint_start_date": "4/29/2019",
+            "sprint_end_date": "5/10/2019"
+        },
+        {
+            "current_sprint": "Sprint 2",
+            "sprint_start_date": "5/13/2019",
+            "sprint_end_date": "5/24/2019"
+        },
+        {
+            "current_sprint": "Sprint 3",
+            "sprint_start_date": "5/27/2019",
+            "sprint_end_date": "6/7/2019"
+        },
+        {
+            "current_sprint": "Sprint 4",
+            "sprint_start_date": "6/10/2019",
+            "sprint_end_date": "6/21/2019"
+        }
+    ]
 }]
 
 
