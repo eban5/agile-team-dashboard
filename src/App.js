@@ -7,6 +7,26 @@ import blart_dates from './data/blart_pi_dates';
 import gccsj_dates from './data/gccsj_pi_dates';
 // import GitHubIssueCount from './GitHub';
 
+//eslint-disable-next-line
+Date.prototype.addDays = function (days) {
+  var dat = new Date(this.valueOf())
+  dat.setDate(dat.getDate() + days);
+  return dat;
+}
+
+function getWeekdays(startDate, stopDate) {
+  var dateArray = [];
+  var thisDate = startDate;
+  while (thisDate <= stopDate) {
+    // skip weekends
+    if (thisDate.getDay() !== 0 && thisDate.getDay() !== 6) {
+      dateArray.push(thisDate)
+    }
+    thisDate = thisDate.addDays(1);
+  }
+  return dateArray;
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -17,34 +37,37 @@ class App extends Component {
       blart_end_date: "",
       blart_sprint: "",
       blart_current_month: "",
+      blart_date_range: "",
       gccsj_program_increment: "",
       gccsj_start_date: "",
       gccsj_end_date: "",
       gccsj_sprint: "",
-      gccsj_current_month: ""
+      gccsj_current_month: "",
+      gccsj_date_range: "",
     }
   }
 
   componentDidMount() {
     //find out what today is
-    var today = new Date().toLocaleDateString();
-    // var today = new Date('3/5/2019').toLocaleString();
-    // console.log(today)
+    var today = new Date();
     this.setState({ today: today })
 
     //iterate through both ARTs date sets
     for (let x = 0; x < blart_dates.length; x++) {
       for (let y = 0; y < blart_dates[x].sprints.length; y++) {
-        // console.log(blart_dates[x].sprints[y].sprint_start_date)
-        // console.log(today >= blart_dates[x].sprints[y].sprint_start_date)
-        if (today >= blart_dates[x].sprints[y].sprint_start_date && today <= blart_dates[x].sprints[y].sprint_end_date) {
-          // console.log("Hit")
+        let sprint_start_date = new Date(blart_dates[x].sprints[y].sprint_start_date);
+        let sprint_end_date = new Date(blart_dates[x].sprints[y].sprint_end_date);
+
+        if (today >= sprint_start_date && today <= sprint_end_date) {
+          // get the weekdays in each range
+          var blart_date_range = getWeekdays(sprint_start_date, sprint_end_date);
           this.setState({
             blart_program_increment: blart_dates[x].program_increment,
             blart_sprint: blart_dates[x].sprints[y].current_sprint,
-            blart_start_date: blart_dates[x].sprints[y].sprint_start_date,
-            blart_end_date: blart_dates[x].sprints[y].sprint_end_date,
-            blart_current_month: new Date(today).toLocaleString('en-us', { month: 'long' })
+            blart_start_date: sprint_start_date,
+            blart_end_date: sprint_end_date,
+            blart_current_month: today.toLocaleString('en-us', { month: 'long' }),
+            blart_date_range: blart_date_range
           })
         }
       }
@@ -52,13 +75,18 @@ class App extends Component {
 
     for (let x = 0; x < gccsj_dates.length; x++) {
       for (let y = 0; y < gccsj_dates[x].sprints.length; y++) {
-        if (today >= gccsj_dates[x].sprints[y].sprint_start_date && today <= gccsj_dates[x].sprints[y].sprint_end_date) {
+        let sprint_start_date = new Date(gccsj_dates[x].sprints[y].sprint_start_date);
+        let sprint_end_date = new Date(gccsj_dates[x].sprints[y].sprint_end_date);
+        if (today >= sprint_start_date && today <= sprint_end_date) {
+          // get the weekdays in each range
+          var gccsj_date_range = getWeekdays(sprint_start_date, sprint_end_date);
           this.setState({
             gccsj_program_increment: gccsj_dates[x].program_increment,
             gccsj_sprint: gccsj_dates[x].sprints[y].current_sprint,
-            gccsj_start_date: gccsj_dates[x].sprints[y].sprint_start_date,
-            gccsj_end_date: gccsj_dates[x].sprints[y].sprint_end_date,
-            gccsj_current_month: new Date(today).toLocaleString('en-us', { month: 'long' })
+            gccsj_start_date: sprint_start_date,
+            gccsj_end_date: sprint_end_date,
+            gccsj_current_month: today.toLocaleString('en-us', { month: 'long' }),
+            gccsj_date_range: gccsj_date_range
           })
         }
       }
@@ -66,6 +94,20 @@ class App extends Component {
   }
   //send the appropriate date ranges to each Table component
   render() {
+    const { today,
+      blart_program_increment,
+      blart_sprint,
+      blart_start_date,
+      blart_end_date,
+      blart_current_month,
+      blart_date_range,
+      gccsj_program_increment,
+      gccsj_sprint,
+      gccsj_start_date,
+      gccsj_end_date,
+      gccsj_current_month,
+      gccsj_date_range } = this.state;
+
     return (
       <div className="App">
         <div className="container-fluid">
@@ -82,19 +124,20 @@ class App extends Component {
             <div className="row">
               <div className="col">
                 <div className="blart-blue blart-title">
-                  {this.state.blart_program_increment} - {this.state.blart_sprint}
+                  {blart_program_increment} - {blart_sprint}
                 </div>
               </div>
             </div>
             <div className="row">
               <div className="col">
                 <div>
-                  {this.state.blart_current_month}
+                  {blart_current_month}
                   <Table
                     art="blart"
-                    start_date={this.state.blart_start_date}
-                    end_date={this.state.blart_end_date}
-                    today={this.state.today}
+                    start_date={blart_start_date}
+                    end_date={blart_end_date}
+                    today={today}
+                    date_range={blart_date_range}
                   />
                 </div>
 
@@ -124,21 +167,22 @@ class App extends Component {
             <div className="row">
               <div className="col">
                 <div className="blart-purple blart-title">
-                  {this.state.gccsj_program_increment} - {this.state.gccsj_sprint}
+                  {gccsj_program_increment} - {gccsj_sprint}
                 </div>
               </div>
             </div>
             <div className="row">
               <div className="col">
                 <div>
-                  {this.state.gccsj_current_month}
+                  {gccsj_current_month}
 
                   <Table
                     art="gccsj"
-                    start_date={this.state.gccsj_start_date}
-                    end_date={this.state.gccsj_end_date}
-                    today={this.state.today}
-                    sprint={this.state.gccsj_sprint}
+                    start_date={gccsj_start_date}
+                    end_date={gccsj_end_date}
+                    today={today}
+                    sprint={gccsj_sprint}
+                    date_range={gccsj_date_range}
                   />
                 </div>
               </div>

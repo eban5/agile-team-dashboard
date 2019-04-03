@@ -1,30 +1,10 @@
 import React from 'react';
 import '../styles/table.css';
 
-//eslint-disable-next-line
-Date.prototype.addDays = function (days) {
-    var dat = new Date(this.valueOf())
-    dat.setDate(dat.getDate() + days);
-    return dat;
-}
-
-function getDates(startDate, stopDate) {
-    var dateArray = [];
-    var currentDate = startDate;
-    while (currentDate <= stopDate) {
-        // skip weekends
-        if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
-            dateArray.push(currentDate)
-        }
-        currentDate = currentDate.addDays(1);
-    }
-    return dateArray;
-}
-
 export default function Table(props) {
     if (props.art === "blart") {
-        var blart_dates = getDates(new Date(props.start_date), new Date(props.end_date));
-        var cal = blart_dates.map((item, idx) => {
+        var blart_date_range = Array.from(props.date_range)
+        var cal = blart_date_range.map((item, idx) => {
             if (item.getDate() === new Date(props.today).getDate()) {
                 return (<td className="today" key={idx}>
                     {item.getDate()}<div className="day"></div>
@@ -62,23 +42,23 @@ export default function Table(props) {
             </table>
         )
     } else if (props.art === "gccsj") {
-        var gccsj_dates = getDates(new Date(props.start_date), new Date(props.end_date));
-        var j_cal = gccsj_dates.map((item, idx) => {
-            if (item.getDate() === new Date(props.today).getDate()) {
-                return (<td className="today_gccsj" key={idx}>
-                    {item.getDate()}
-                </td>)
-
-            } else if (idx === 0) {
-                return (<td className="td-blank" key={idx}></td>)
+        var gccsj_date_range = Array.from(props.date_range)
+        var j_cal = gccsj_date_range.map((item, idx) => {
+            // if (idx === 0) {
+            //     return (<td className="td-blank" key={idx}></td>)
+            // }
+            // else if (item.getDay() === 1) {
+            //     return (<td key={idx}>{item.getDate()}</td>)
+            // }
+            if (item.getDate() === props.today.getDate()) {
+                return (<td className="today_gccsj" key={idx}>{item.getDate()}</td>)
             }
             else {
-                return (
-                    <td key={idx}>
-                        {item.getDate()}
-                    </td>)
+                return (<td key={idx}>{item.getDate()}</td>)
             }
+
         })
+        j_cal.unshift(<td className="td-blank" key={"empty"}></td>) // in GCCS-J's PIs, they begin on a Tuesday and 
 
         var j_first_row = [];
         var j_second_row = [];
