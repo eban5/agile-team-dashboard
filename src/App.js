@@ -57,8 +57,13 @@ class App extends Component {
       for (let y = 0; y < blart_dates[x].sprints.length; y++) {
         let sprint_start_date = new Date(blart_dates[x].sprints[y].sprint_start_date);
         let sprint_end_date = new Date(blart_dates[x].sprints[y].sprint_end_date);
-
-        if (today >= sprint_start_date && today <= sprint_end_date) {
+        /*  
+          we check for end_date + 1 day as the array end bounds because new Javascript Date objects 
+          include full timestamps set to 00:00:00, so if its 11AM on 4-12, this falls out of range.
+          Since it doesn't fall into a date range ending in 4-12 or the next range starting 4-13, 
+          the table shows up blank on the dashboard.
+        */
+        if (today >= sprint_start_date && today <= sprint_end_date.addDays(1)) {
           // get the weekdays in each range
           var blart_date_range = getWeekdays(sprint_start_date, sprint_end_date);
           this.setState({
@@ -77,7 +82,7 @@ class App extends Component {
       for (let y = 0; y < gccsj_dates[x].sprints.length; y++) {
         let sprint_start_date = new Date(gccsj_dates[x].sprints[y].sprint_start_date);
         let sprint_end_date = new Date(gccsj_dates[x].sprints[y].sprint_end_date);
-        if (today >= sprint_start_date && today <= sprint_end_date) {
+        if (today >= sprint_start_date && today <= sprint_end_date.addDays(1)) {
           // get the weekdays in each range
           var gccsj_date_range = getWeekdays(sprint_start_date, sprint_end_date);
           this.setState({
