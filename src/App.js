@@ -150,7 +150,8 @@ class App extends Component {
               <div className="col projects">
                 <h2>Active Projects</h2>
                 <ul>
-                  <li>C4PM Development</li>
+                  <li>CleanSlate Framework Development</li>
+                  <li>C4PM Cyber Range Source Code Review</li>
                   <li>ITaaS</li>
                   {/* <li class="pill blue-pill">C4PM Development</li>
                   <li class="pill blue-pill">ITaaS</li> */}
