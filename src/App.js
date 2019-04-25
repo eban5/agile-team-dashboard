@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Table from './components/Table';
+import ProjectList from "./components/ProjectList";
 import './styles/App.css';
 import './styles/index.css';
 import './styles/table.css';
 import blart_dates from './data/blart_pi_dates';
 import gccsj_dates from './data/gccsj_pi_dates';
-// import GitHubIssueCount from './GitHub';
 
 //eslint-disable-next-line
 Date.prototype.addDays = function (days) {
@@ -148,14 +148,7 @@ class App extends Component {
 
               </div>
               <div className="col projects">
-                <h2>Active Projects</h2>
-                <ul>
-                  <li>CleanSlate Framework Development</li>
-                  <li>C4PM Cyber Range Source Code Review</li>
-                  <li>ITaaS</li>
-                  {/* <li class="pill blue-pill">C4PM Development</li>
-                  <li class="pill blue-pill">ITaaS</li> */}
-                </ul>
+                <ProjectList art="blart" />
               </div>
             </div>
           </div>
@@ -193,18 +186,7 @@ class App extends Component {
                 </div>
               </div>
               <div className="col projects">
-                <h2>Active Projects</h2>
-                <ul>
-                  <li>JE DevOps Pipeline</li>
-                  <li>Comms Topology</li>
-                  <li>JE Cyber Security Engineering</li>
-                  <li>JE Interface Management</li>
-                  <li>JE PMO Strategy</li>
-                  <li>JE Continuous Exploration</li>
-                  <li>J Central Curation</li>
-                  {/* <li class="pill purple-pill">DevOps Pipeline</li>
-     <li class="pill purple-pill">Comms Topology</li> */}
-                </ul>
+                <ProjectList art="gccsj" />
               </div>
             </div>
           </div>

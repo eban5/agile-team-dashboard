@@ -26,16 +26,16 @@ var gccsj_dates = [{
         "sprint_end_date": "4/23/2019",
     }, {
         "current_sprint": "Sprint 2",
-        "sprint_start_date": "4/24/2019",
-        "sprint_end_date": "5/14/2019",
+        "sprint_start_date": "4/23/2019",
+        "sprint_end_date": "5/13/2019",
     }, {
         "current_sprint": "Sprint 3",
-        "sprint_start_date": "5/15/2019",
-        "sprint_end_date": "6/4/2019",
+        "sprint_start_date": "5/14/2019",
+        "sprint_end_date": "6/3/2019",
     }, {
         "current_sprint": "Sprint 4",
-        "sprint_start_date": "6/5/2019",
-        "sprint_end_date": "6/18/2019",
+        "sprint_start_date": "6/4/2019",
+        "sprint_end_date": "6/17/2019",
     }]
 }]
 
