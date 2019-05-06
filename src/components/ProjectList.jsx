@@ -7,6 +7,7 @@ export default class ProjectList extends Component {
                 <div>
                     <h2>Active Projects</h2>
                     <ul>
+                        <li>ISMS</li>
                         <li>CleanSlate Framework Development</li>
                         <li>C4PM Cyber Range Source Code Review</li>
                         <li>ITaaS</li>
