@@ -1,4 +1,4 @@
-var blart_dates = [{
+var team1_dates = [{
     "program_increment": "PI 5",
     "sprints": [{
             "current_sprint": "Sprint 1",
@@ -47,4 +47,4 @@ var blart_dates = [{
 }]
 
 
-export default blart_dates;
+export default team1_dates;

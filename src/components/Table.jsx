@@ -2,9 +2,9 @@ import React from 'react';
 import '../styles/table.css';
 
 export default function Table(props) {
-    if (props.art === "blart") {
-        var blart_date_range = Array.from(props.date_range)
-        var cal = blart_date_range.map((item, idx) => {
+    if (props.art === "team1") {
+        var team1_date_range = Array.from(props.date_range)
+        var cal = team1_date_range.map((item, idx) => {
             if (item.getDate() === new Date(props.today).getDate()) {
                 return (<td className="today" key={idx}>
                     {item.getDate()}<div className="day"></div>
@@ -41,9 +41,9 @@ export default function Table(props) {
                 </tbody>
             </table>
         )
-    } else if (props.art === "gccsj") {
-        var gccsj_date_range = Array.from(props.date_range)
-        var j_cal = gccsj_date_range.map((item, idx) => {
+    } else if (props.art === "team2") {
+        var team2_date_range = Array.from(props.date_range)
+        var j_cal = team2_date_range.map((item, idx) => {
             // if (idx === 0) {
             //     return (<td className="td-blank" key={idx}></td>)
             // }
@@ -51,7 +51,7 @@ export default function Table(props) {
             //     return (<td key={idx}>{item.getDate()}</td>)
             // }
             if (item.getDate() === props.today.getDate()) {
-                return (<td className="today_gccsj" key={idx}>{item.getDate()}</td>)
+                return (<td className="today_team2" key={idx}>{item.getDate()}</td>)
             }
             else {
                 return (<td key={idx}>{item.getDate()}</td>)

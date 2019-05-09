@@ -4,8 +4,8 @@ import ProjectList from "./components/ProjectList";
 import './styles/App.css';
 import './styles/index.css';
 import './styles/table.css';
-import blart_dates from './data/blart_pi_dates';
-import gccsj_dates from './data/gccsj_pi_dates';
+import team1_dates from './data/team1_pi_dates';
+import team2_dates from './data/team2_pi_dates';
 
 //eslint-disable-next-line
 Date.prototype.addDays = function (days) {
@@ -32,18 +32,18 @@ class App extends Component {
     super(props);
     this.state = {
       today: "",
-      blart_program_increment: "",
-      blart_start_date: "",
-      blart_end_date: "",
-      blart_sprint: "",
-      blart_current_month: "",
-      blart_date_range: "",
-      gccsj_program_increment: "",
-      gccsj_start_date: "",
-      gccsj_end_date: "",
-      gccsj_sprint: "",
-      gccsj_current_month: "",
-      gccsj_date_range: "",
+      team1_program_increment: "",
+      team1_start_date: "",
+      team1_end_date: "",
+      team1_sprint: "",
+      team1_current_month: "",
+      team1_date_range: "",
+      team2_program_increment: "",
+      team2_start_date: "",
+      team2_end_date: "",
+      team2_sprint: "",
+      team2_current_month: "",
+      team2_date_range: "",
     }
   }
 
@@ -53,10 +53,10 @@ class App extends Component {
     this.setState({ today: today })
 
     //iterate through both ARTs date sets
-    for (let x = 0; x < blart_dates.length; x++) {
-      for (let y = 0; y < blart_dates[x].sprints.length; y++) {
-        let sprint_start_date = new Date(blart_dates[x].sprints[y].sprint_start_date);
-        let sprint_end_date = new Date(blart_dates[x].sprints[y].sprint_end_date);
+    for (let x = 0; x < team1_dates.length; x++) {
+      for (let y = 0; y < team1_dates[x].sprints.length; y++) {
+        let sprint_start_date = new Date(team1_dates[x].sprints[y].sprint_start_date);
+        let sprint_end_date = new Date(team1_dates[x].sprints[y].sprint_end_date);
         /*  
           we check for end_date + 1 day as the array end bounds because new Javascript Date objects 
           include full timestamps set to 00:00:00, so if its 11AM on 4-12, this falls out of range.
@@ -65,33 +65,33 @@ class App extends Component {
         */
         if (today >= sprint_start_date && today <= sprint_end_date.addDays(1)) {
           // get the weekdays in each range
-          var blart_date_range = getWeekdays(sprint_start_date, sprint_end_date);
+          var team1_date_range = getWeekdays(sprint_start_date, sprint_end_date);
           this.setState({
-            blart_program_increment: blart_dates[x].program_increment,
-            blart_sprint: blart_dates[x].sprints[y].current_sprint,
-            blart_start_date: sprint_start_date,
-            blart_end_date: sprint_end_date,
-            blart_current_month: today.toLocaleString('en-us', { month: 'long' }),
-            blart_date_range: blart_date_range
+            team1_program_increment: team1_dates[x].program_increment,
+            team1_sprint: team1_dates[x].sprints[y].current_sprint,
+            team1_start_date: sprint_start_date,
+            team1_end_date: sprint_end_date,
+            team1_current_month: today.toLocaleString('en-us', { month: 'long' }),
+            team1_date_range: team1_date_range
           })
         }
       }
     }
 
-    for (let x = 0; x < gccsj_dates.length; x++) {
-      for (let y = 0; y < gccsj_dates[x].sprints.length; y++) {
-        let sprint_start_date = new Date(gccsj_dates[x].sprints[y].sprint_start_date);
-        let sprint_end_date = new Date(gccsj_dates[x].sprints[y].sprint_end_date);
+    for (let x = 0; x < team2_dates.length; x++) {
+      for (let y = 0; y < team2_dates[x].sprints.length; y++) {
+        let sprint_start_date = new Date(team2_dates[x].sprints[y].sprint_start_date);
+        let sprint_end_date = new Date(team2_dates[x].sprints[y].sprint_end_date);
         if (today >= sprint_start_date && today <= sprint_end_date.addDays(1)) {
           // get the weekdays in each range
-          var gccsj_date_range = getWeekdays(sprint_start_date, sprint_end_date);
+          var team2_date_range = getWeekdays(sprint_start_date, sprint_end_date);
           this.setState({
-            gccsj_program_increment: gccsj_dates[x].program_increment,
-            gccsj_sprint: gccsj_dates[x].sprints[y].current_sprint,
-            gccsj_start_date: sprint_start_date,
-            gccsj_end_date: sprint_end_date,
-            gccsj_current_month: today.toLocaleString('en-us', { month: 'long' }),
-            gccsj_date_range: gccsj_date_range
+            team2_program_increment: team2_dates[x].program_increment,
+            team2_sprint: team2_dates[x].sprints[y].current_sprint,
+            team2_start_date: sprint_start_date,
+            team2_end_date: sprint_end_date,
+            team2_current_month: today.toLocaleString('en-us', { month: 'long' }),
+            team2_date_range: team2_date_range
           })
         }
       }
@@ -100,18 +100,18 @@ class App extends Component {
   //send the appropriate date ranges to each Table component
   render() {
     const { today,
-      blart_program_increment,
-      blart_sprint,
-      blart_start_date,
-      blart_end_date,
-      blart_current_month,
-      blart_date_range,
-      gccsj_program_increment,
-      gccsj_sprint,
-      gccsj_start_date,
-      gccsj_end_date,
-      gccsj_current_month,
-      gccsj_date_range } = this.state;
+      team1_program_increment,
+      team1_sprint,
+      team1_start_date,
+      team1_end_date,
+      team1_current_month,
+      team1_date_range,
+      team2_program_increment,
+      team2_sprint,
+      team2_start_date,
+      team2_end_date,
+      team2_current_month,
+      team2_date_range } = this.state;
 
     return (
       <div className="App">
@@ -119,7 +119,7 @@ class App extends Component {
           <div className="art-block">
             <div className="row">
               <div className="col">
-                <div className="blart-header">BluestoneLogic Agile Release Train<br />
+                <div className="team1-header">Team 1 Agile Release Train<br />
                 </div>
               </div>
             </div>
@@ -128,27 +128,27 @@ class App extends Component {
             </div>
             <div className="row">
               <div className="col">
-                <div className="blart-blue blart-title">
-                  {blart_program_increment} - {blart_sprint}
+                <div className="team1-blue team1-title">
+                  {team1_program_increment} - {team1_sprint}
                 </div>
               </div>
             </div>
             <div className="row">
               <div className="col">
                 <div>
-                  {blart_current_month}
+                  {team1_current_month}
                   <Table
-                    art="blart"
-                    start_date={blart_start_date}
-                    end_date={blart_end_date}
+                    art="team1"
+                    start_date={team1_start_date}
+                    end_date={team1_end_date}
                     today={today}
-                    date_range={blart_date_range}
+                    date_range={team1_date_range}
                   />
                 </div>
 
               </div>
               <div className="col projects">
-                <ProjectList art="blart" />
+                <ProjectList art="team1" />
               </div>
             </div>
           </div>
@@ -156,7 +156,7 @@ class App extends Component {
           <div className="art-block">
             <div className="row">
               <div className="col">
-                <div className="blart-header">GCCS-J Agile Release Train<br /></div>
+                <div className="team1-header">Team 2 Agile Release Train<br /></div>
               </div>
             </div>
             <div className="row">
@@ -165,28 +165,28 @@ class App extends Component {
             {/* --------- GCCS-J  ----------- */}
             <div className="row">
               <div className="col">
-                <div className="blart-purple blart-title">
-                  {gccsj_program_increment} - {gccsj_sprint}
+                <div className="team1-purple team1-title">
+                  {team2_program_increment} - {team2_sprint}
                 </div>
               </div>
             </div>
             <div className="row">
               <div className="col">
                 <div>
-                  {gccsj_current_month}
+                  {team2_current_month}
 
                   <Table
-                    art="gccsj"
-                    start_date={gccsj_start_date}
-                    end_date={gccsj_end_date}
+                    art="team2"
+                    start_date={team2_start_date}
+                    end_date={team2_end_date}
                     today={today}
-                    sprint={gccsj_sprint}
-                    date_range={gccsj_date_range}
+                    sprint={team2_sprint}
+                    date_range={team2_date_range}
                   />
                 </div>
               </div>
               <div className="col projects">
-                <ProjectList art="gccsj" />
+                <ProjectList art="team2" />
               </div>
             </div>
           </div>

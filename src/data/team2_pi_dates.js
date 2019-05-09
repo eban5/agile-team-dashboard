@@ -1,4 +1,4 @@
-var gccsj_dates = [{
+var team2_dates = [{
     "program_increment": "PI 1",
     "sprints": [{
         "current_sprint": "Sprint 1",
@@ -39,4 +39,4 @@ var gccsj_dates = [{
     }]
 }]
 
-export default gccsj_dates;
+export default team2_dates;

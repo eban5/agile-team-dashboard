@@ -1,5 +1,5 @@
 .App {
-  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)), url('../images/blart-background-wide.png');
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)), url('../images/dashboard-background-wide.png');
   background-size: cover;
   display: table;
   width: 100vw;
@@ -52,7 +52,7 @@ hr {
   padding-top: 10px;
 }
 
-.blart-blue {
+.team1-blue {
   color: #34A4DA;
 }
 
@@ -60,7 +60,7 @@ hr {
   background: #34A4DA;
 }
 
-.blart-purple {
+.team1-purple {
   color: #544496;
 }
 
@@ -82,7 +82,7 @@ hr {
   color: black;
 }
 
-.today_gccsj {
+.today_team2 {
   background: #544496;
   color: black;
 }
@@ -104,26 +104,26 @@ hr {
   /* margin-top: 30px; */
 }
 
-.blart-header {
+.team1-header {
   padding-top: 15px;
   text-transform: uppercase;
   font-size: 0.5em;
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
-.blart-title {
+.team1-title {
   font-family: 'Open Sans Condensed', Helvetica, Arial, sans-serif;
   font-size: 2em;
   font-weight: bold;
   /* letter-spacing: 0.025em; */
 }
 
-.blart-background {
+.team1-background {
   width: 100%;
 }
 
 .img-container {
-  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)), url('../images/blart-background-wide.png');
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)), url('../images/dashboard-background-wide.png');
   background-size: cover;
   display: table;
   width: 100vw;
