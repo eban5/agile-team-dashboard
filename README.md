@@ -1,6 +1,8 @@
 # art-dashboard
 
-This project is a single page webapp/dashboard made in React for displaying data related to Agile Release Train (ART) activities. This was originally developed for BluestoneLogic's cross-functional Scaled-Agile-Framework teams to reference which active projects were being worked on by either team and which day in their respective Program Increment they were in. The dashboards were designed to be displayed on our large TV in the main bullpen of the office. Typically with cross-functional teams operating on separate Program Increments, it's easy to fall out of sync with each team's release schedule and cadence. This dashboard was intended to help make that easier - so far so good.
+This project is a single page webapp/dashboard made in React for displaying data related to Agile Release Train (ART) activities. The ART Dashboard was originally developed for BluestoneLogic's cross-functional Scaled-Agile-Framework teams and designed to be displayed on our large TV in the office bullpen. 
+
+Typically with cross-functional teams operating on separate Program Increments, it's easy to fall out of sync with each team's release schedule and cadence. This dashboard was intended to help make that easier - so far so good. There is room for improvement, such as adding GitHub API stats or marking special events that each team has coming up. 
 
 _Note: This is a copy of my work hosted on our private organization repository. Names of teams and actual project names were removed and replaced with placeholder values._
 
@@ -25,4 +27,4 @@ Typical order of operations is:
 5. AWS SNS will listen for events (Build In Progress / Build Success / Build Failure) and report them in a formatted message to our Slack #dev-it-internal-feed channel (private - please ask for an invite).
 6. After about 2 minutes, the changes will be live on the CloudFront-served site.
 
-![Screenshot of ART Dashboard](https://github.com/BluestoneLogic/blart-dashboard/blob/master/screenshot-blart-dashboard.png)
+![Screenshot of ART Dashboard](https://github.com/BluestoneLogic/art-dashboard/blob/master/art_dashboard_screenshot.png)
