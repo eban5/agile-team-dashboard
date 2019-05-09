@@ -8,6 +8,8 @@ _Note: This is a copy of my work hosted on our private organization repository. 
 
 ![CodeBuild](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoicTZRUWdzUE5TVFNSNTd3UEhXTkdrVTYyUzlFY0ZxOHAzTXpya3NuTHFoQ3lRbU5hVmFtNXdESVkvT2ZYRlpRZkdma29RR0VWSGFQR1JYWkZldWJVQ2RRPSIsIml2UGFyYW1ldGVyU3BlYyI6ImtwaFMwMENSV3E5SDNYaGQiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 
+![Screenshot of ART Dashboard](https://github.com/eban5/art-dashboard/blob/master/art_dashboard_screenshot.png)
+
 ## How to run the dashboard
 
 1. Clone this repo
@@ -27,4 +29,4 @@ Typical order of operations is:
 5. AWS SNS will listen for events (Build In Progress / Build Success / Build Failure) and report them in a formatted message to our Slack #dev-it-internal-feed channel (private - please ask for an invite).
 6. After about 2 minutes, the changes will be live on the CloudFront-served site.
 
-![Screenshot of ART Dashboard](https://github.com/BluestoneLogic/art-dashboard/blob/master/art_dashboard_screenshot.png)
+
